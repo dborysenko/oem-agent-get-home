@@ -1,0 +1,35 @@
+---
+# tasks file for oem-agent-get-home
+- block:
+  - name: push emcliGetOracleHome script
+    template: src=emcliGetOracleHome.py dest=/tmp/emcliGetOracleHomeExperimental.py owner="{{ AGENT_USER }}"
+    delegate_to: "{{ OEM_HOST }}"
+
+  - set_fact: hosts_list=""
+
+  - name: fill hosts_list
+    set_fact:
+      hosts_list: "{{ hosts_list }} {{ item }}"
+    with_items: "{{ groups.all }}"
+
+  - name: get oracleHome
+    shell: emcli @/tmp/emcliGetOracleHomeExperimental.py {{ hosts_list }}
+    register: agentHomeReg
+    delegate_to: "{{ OEM_HOST }}"
+
+  - set_fact: agentHomeDict="{{ agentHomeReg.stdout }}"
+
+  run_once: True
+
+- block:
+  - name: set agentHome
+    set_fact:
+      agentHome: "{{ agentHomeDict[inventory_hostname]['home_dir'] }}"
+
+  - name: set agent owner
+    set_fact:
+      agentOwner: "{{ agentHomeDict[inventory_hostname]['owner'] }}"
+
+  - name: set agentLocation
+    set_fact:
+      agentLocation: "{{ agentHome }}/../.."

@@ -1,0 +1,3 @@
+---
+# defaults file for oem-agent-get-home
+OEM_AGENT_PORT: 3872
