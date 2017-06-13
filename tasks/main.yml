@@ -26,10 +26,14 @@
     set_fact:
       agentHome: "{{ agentHomeDict[inventory_hostname]['home_dir'] }}"
 
+  - name: set agentLocation
+    set_fact:
+      agentLocation: "{{ agentHomeDict[inventory_hostname]['base_dir'] }}"
+
   - name: set agent owner
     set_fact:
       agentOwner: "{{ agentHomeDict[inventory_hostname]['owner'] }}"
 
-  - name: set agentLocation
+  - name: set agent group
     set_fact:
-      agentLocation: "{{ agentHome }}/../.."
+      agentGroup: "{{ agentHomeDict[inventory_hostname]['group'] }}"

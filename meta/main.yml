@@ -1,6 +1,6 @@
 galaxy_info:
   author: Dmytro Borysenko
-  description:
+  description: Retrieve oracle home and owner for agent.
   company: Home LLC
 
   # If the issue tracker for your role is not on github, uncomment the
@@ -33,10 +33,10 @@ galaxy_info:
   #
   platforms:
   - name: EL
-  #  versions:
+    versions:
   #  - all
   #  - 5
-    - 6
+      - 6
   #  - 7
   #- name: GenericUNIX
   #  versions:
@@ -155,7 +155,9 @@ galaxy_info:
   #  - squeeze
   #  - wheezy
 
-  galaxy_tags: []
+  galaxy_tags:
+    - weblogic
+    - OEM agent
     # List tags for your role here, one per line. A tag is
     # a keyword that describes and categorizes the role.
     # Users find roles by searching for tags. Be sure to
