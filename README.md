@@ -12,7 +12,7 @@ Role Variables
 --------------
 
     OEM_URL: https://oem.example.com:8090/em # URL which can be used to login to OEM.
-    OEM_PASSWORD: sysman password for OEM.
+    OEM_PASSWORD: q1w2e3 # sysman password for OEM.
     OEM_HOST: oms1.example.com # One of OEM's nodes. Ansible host should have ssh-key based access to it.
     OEM_AGENT_PORT: 3872 # agent port
 
@@ -23,7 +23,7 @@ site.yml
 
     - hosts: weblogic, adminsu, singlehosts      
       roles:
-        - oem-agent-get-home
+        - dborysenko.oem-agent-get-home
         
 hosts
 
