@@ -1,7 +1,0 @@
----
-# defaults file for oem-agent-get-home
-OEM_AGENT_PORT: 3872
-OEM_URL: https://oem.example.com/em
-OEM_HOST: oms1.example.com
-OEM_PASSWORD: q1w2e3
-
