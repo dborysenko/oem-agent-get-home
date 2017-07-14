@@ -19,6 +19,10 @@
 
   - set_fact: agentHomeDict="{{ agentHomeReg.stdout }}"
 
+  - name: Looking for agent in OEM
+    fail: msg="Agent not found in OEM"
+    when: "agentHomeDict[inventory_hostname] is not defined"
+
   run_once: True
 
 - block:
